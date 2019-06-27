@@ -1,22 +1,16 @@
-import superagentPromise from 'superagent-promise';
-import _superagent from 'superagent';
-
-const superagent = superagentPromise(_superagent, global.Promise);
+import axios from 'axios';
 const host = process.env.REACT_APP_HOST;
+const hostProxy = process.env.REACT_APP_HOST_PROXY;
 const apiKey = process.env.REACT_APP_API_KEY;
 
-const requestConfig = req => {
-    req
-        .set('Api-Token', apiKey)
-        .set('Access-Control-Allow-Origin', '*')
-        .set('Access-Control-Allow-Headers', '*')
-        .set('Access-Control-Allow-Methods', '*');
-};
-const responseBody = res => res.body;
+const axiosInstance = axios.create({
+    timeout: 1000,
+    headers: { 'Api-Token': apiKey },
+});
 
 const requests = {
-    get: (url, body) =>
-        superagent.get(`https://${host}${url}`, body).use(requestConfig).then(responseBody),
+    get: (url) =>
+        axiosInstance.get(`${hostProxy}https://${host}${url}`).then(res => res.body),
 };
 
 const Contacts = {
