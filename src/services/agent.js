@@ -6,7 +6,9 @@ const host = process.env.REACT_APP_HOST;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const requestConfig = req => {
-    req.set('Api-Token', apiKey);
+    req
+        .set('Api-Token', apiKey)
+        .set('Access-Control-Allow-Origin', 'https://dw-demotable.herokuapp.com/');
 };
 const responseBody = res => res.body;
 
@@ -22,4 +24,4 @@ const Contacts = {
 
 export default {
     Contacts,
-}
+};
