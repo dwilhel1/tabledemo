@@ -8,7 +8,9 @@ const apiKey = process.env.REACT_APP_API_KEY;
 const requestConfig = req => {
     req
         .set('Api-Token', apiKey)
-        .withCredentials();
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Access-Control-Allow-Headers', '*')
+        .set('Access-Control-Allow-Methods', '*');
 };
 const responseBody = res => res.body;
 
