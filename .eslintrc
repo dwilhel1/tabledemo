@@ -16,5 +16,12 @@
         "document": false,
         "console": false,
         "global": false
-      }
+      },
+    "settings": {
+        "react": {
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
 }
