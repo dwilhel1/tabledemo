@@ -8,7 +8,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 const requestConfig = req => {
     req
         .set('Api-Token', apiKey)
-        .set('Access-Control-Allow-Origin', 'https://dw-demotable.herokuapp.com/');
+        .withCredentials();
 };
 const responseBody = res => res.body;
 
