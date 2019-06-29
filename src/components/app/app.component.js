@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.scss';
 
-import agent from './services/agent';
+import agent from '../../services/agent';
 
 class App extends React.Component {
     constructor(props) {
@@ -36,7 +35,7 @@ class App extends React.Component {
                     agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
                         const contacts = this.state.contacts;
                         contacts[index].custom = {
-                            deals: contactDealsResult.contactDeals.length,
+                            deals: contactDealsResult.contactDeals,
                         };
                         this.setState({
                             isLoaded: {
@@ -89,7 +88,7 @@ class App extends React.Component {
                             </td>
                             <td>
                                 <span>
-                                    {isLoaded.deals && item.custom ? item.custom.deals : 'Loading...'}
+                                    {isLoaded.deals && item.custom ? item.custom.deals.length : 'Loading...'}
                                 </span>
                             </td>
                             <td>
