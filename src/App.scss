@@ -1,3 +1,6 @@
+$table-body-row-height: 46px;
+$table-head-row-height: 28px;
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -6,19 +9,36 @@ body {
 
 table {
   width: 100%;
+  border-collapse: collapse;
 
-  thead {
-    tr {
-      position: sticky;
-      top: 0;
-      height: 28px;
-      background-color: white;
-    }
+  th {
+    font-weight: normal;
+    position: sticky;
+    top: 0;
+    height: $table-head-row-height;
+    background-color: white;
+    text-align: left;
+  }
+
+  td:first-child, th:first-child {
+    padding-left: 12px;
+  }
+
+  td:last-child, th:last-child  {
+    padding-right: 12px;
   }
 
   tbody {
     tr {
-      height: 46px;
+      height: $table-body-row-height;
     }
+
+    tr:nth-child(odd) {
+      background-color: #F7F9FF;
+    }
+  }
+
+  tr, th {
+    border: 1px solid lightgrey;
   }
 }

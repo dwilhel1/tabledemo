@@ -15,28 +15,20 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        const contactDetails = [];
+        agent.Deals.getAllDeals().then(allDealsResult => console.log(allDealsResult));
+        // agent.Tags.getAllTags().then(allTagsResult => console.log(allTagsResult));
         agent.Contacts.getAllContacts()
             .then(
                 (contactsList) => {
-                    this.setState({
-                        contacts: contactsList.contacts,
-                    });
-                    /* contactsList.contacts.forEach(contact => {
-                        agent.Contacts.getContactData(contact.id)
-                            .then((contactResult) => {
-                                contactDetails.push(contactResult);
-                            },
-                            (error) => {
-                                this.setState({
-                                    isLoaded: true,
-                                    error,
-                                });
-                            });
-                    }); */
+                    console.log(contactsList);
                     this.setState({
                         isLoaded: true,
-                        contactDetailsList: contactDetails,
+                        contacts: contactsList.contacts,
+                    });
+                    contactsList.contacts.forEach(contact => {
+                        // agent.Contacts.getContactData(contact.id).then((result) => console.log(result));
+                        // agent.Contacts.getContactTags(contact.id).then((result) => console.log(result));
+                        agent.Contacts.getContactDeals(contact.id).then((result) => console.log(result));
                     });
                 },
                 (error) => {
@@ -59,27 +51,32 @@ class App extends React.Component {
                         ))}
                     </tr>
                 </thead>
-                {error ? (
-                    <p>Error: {error.message}</p>): !isLoaded ? (
-                    <p>Loading...</p>
-                ) : (
-                    <tbody>
-                        {contacts.map(item => (
+                <tbody>
+                    {error ? <tr><td>Error: {error.message}</td></tr> : !isLoaded ? <tr><td>Loading...</td></tr> :
+                        contacts.map(item => (
                             <tr key={item.id}>
                                 <td>
                                     <input type="checkbox"/>
                                 </td>
                                 <td>
-                                    <span>{item.firstName} {item.lastName}</span>
+                                    <span>{item.id} {item.firstName} {item.lastName}</span>
                                 </td>
                                 <td>
-                                    <span>{item.firstName} {item.lastName}</span>
+                                    <span></span>
+                                </td>
+                                <td>
+                                    <span></span>
+                                </td>
+                                <td>
+                                    <span></span>
+                                </td>
+                                <td>
+                                    <span></span>
                                 </td>
                             </tr>
-                        ))}
-                    </tbody>
-                )
-                }
+                        ))
+                    }
+                </tbody>
             </table>
         );
     }

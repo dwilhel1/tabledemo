@@ -18,8 +18,26 @@ const Contacts = {
         requests.get('/contacts'),
     getContactData: (contactId) =>
         requests.get(`/contacts/${contactId}/contactData`),
+    getContactTags: (contactId) =>
+        requests.get(`/contacts/${contactId}/contactTags`),
+    getContactDeals: (contactId) =>
+        requests.get(`/contacts/${contactId}/contactDeals`),
+};
+
+const Deals = {
+    getAllDeals: () =>
+        requests.get('/deals'),
+};
+
+const Tags = {
+    getAllTags: () =>
+        requests.get('/tags'),
+    getContactTag: (contactId) =>
+        requests.get(`/contactTags/${contactId}/tag`),
 };
 
 export default {
     Contacts,
+    Deals,
+    Tags,
 };
