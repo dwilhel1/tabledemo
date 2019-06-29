@@ -16,7 +16,8 @@
         "document": false,
         "console": false,
         "global": false,
-        "process": false
+        "process": false,
+        "Promise": false
       },
     "settings": {
         "react": {

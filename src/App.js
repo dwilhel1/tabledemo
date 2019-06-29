@@ -7,77 +7,101 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: null,
-            isLoaded: false,
+            error: {
+                contacts: false,
+                deals: false,
+            },
+            isLoaded: {
+                contacts: false,
+                deals: false,
+            },
             contacts: [],
             columns: ['', 'Contact', 'Total Value', 'Location', 'Deals', 'Tags'],
         };
     }
 
     componentDidMount() {
-        agent.Deals.getAllDeals().then(allDealsResult => console.log(allDealsResult));
-        // agent.Tags.getAllTags().then(allTagsResult => console.log(allTagsResult));
-        agent.Contacts.getAllContacts()
-            .then(
-                (contactsList) => {
-                    console.log(contactsList);
-                    this.setState({
-                        isLoaded: true,
-                        contacts: contactsList.contacts,
-                    });
-                    contactsList.contacts.forEach(contact => {
-                        // agent.Contacts.getContactData(contact.id).then((result) => console.log(result));
-                        // agent.Contacts.getContactTags(contact.id).then((result) => console.log(result));
-                        agent.Contacts.getContactDeals(contact.id).then((result) => console.log(result));
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error,
+        agent.Contacts.getAllContacts().then(
+            (contactsListResult) => {
+                this.setState({
+                    isLoaded: {
+                        ...this.state.isLoaded,
+                        contacts: true,
+                    },
+                    contacts: contactsListResult.contacts,
+                });
+                this.state.contacts.forEach((contact, index) => {
+                    // agent.Contacts.getContactData(contact.id).then((result) => console.log(result));
+                    // agent.Contacts.getContactTags(contact.id).then((result) => console.log(result));
+                    agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
+                        const contacts = this.state.contacts;
+                        contacts[index].custom = {
+                            deals: contactDealsResult.contactDeals.length,
+                        };
+                        this.setState({
+                            isLoaded: {
+                                ...this.state.isLoaded,
+                                deals: true,
+                            },
+                            contacts,
+                        });
                     });
                 });
+            },
+            (error) => {
+                this.setState({
+                    isLoaded: {
+                        contacts: true,
+                    },
+                    error: {
+                        ...this.state.error.contacts,
+                        error,
+                    },
+                });
+            }
+        );
     }
 
     render () {
         const { error, isLoaded, contacts, columns } = this.state;
 
         return (
-            <table>
-                <thead>
-                    <tr>
-                        {columns.map(item => (
-                            <th key={item}>{item}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {error ? <tr><td>Error: {error.message}</td></tr> : !isLoaded ? <tr><td>Loading...</td></tr> :
-                        contacts.map(item => (
-                            <tr key={item.id}>
-                                <td>
-                                    <input type="checkbox"/>
-                                </td>
-                                <td>
-                                    <span>{item.id} {item.firstName} {item.lastName}</span>
-                                </td>
-                                <td>
-                                    <span></span>
-                                </td>
-                                <td>
-                                    <span></span>
-                                </td>
-                                <td>
-                                    <span></span>
-                                </td>
-                                <td>
-                                    <span></span>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <>
+                <table>
+                    <thead>
+                        <tr>
+                            {columns.map(item => (<th key={item}>{item}</th>))}
+                        </tr>
+                    </thead>
+                    <tbody>{contacts.length ? contacts.map(item => (
+                        <tr key={item.id}>
+                            <td>
+                                <input type="checkbox"/>
+                            </td>
+                            <td>
+                                <span>{item.id} {item.firstName} {item.lastName}</span>
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>
+                            <td>
+                                <span>
+                                    {isLoaded.deals && item.custom ? item.custom.deals : 'Loading...'}
+                                </span>
+                            </td>
+                            <td>
+                                <span></span>
+                            </td>
+                        </tr>
+                    )) : null}
+                    </tbody>
+                </table>
+
+                {error.contacts ? <p>Error: {error.contacts.message}</p> : !isLoaded.contacts ? <p>Loading...</p>: null}
+            </>
         );
     }
 }
