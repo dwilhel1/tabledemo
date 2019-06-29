@@ -4,18 +4,20 @@ const hostProxy = process.env.REACT_APP_HOST_PROXY;
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const axiosInstance = axios.create({
-    timeout: 1000,
+    timeout: 5000,
     headers: { 'Api-Token': apiKey },
 });
 
 const requests = {
     get: (url) =>
-        axiosInstance.get(`${hostProxy}https://${host}${url}`).then(res => res.body),
+        axiosInstance.get(`${hostProxy}https://${host}${url}`).then(res => res.data),
 };
 
 const Contacts = {
-    getContacts: () =>
+    getAllContacts: () =>
         requests.get('/contacts'),
+    getContactData: (contactId) =>
+        requests.get(`/contacts/${contactId}/contactData`),
 };
 
 export default {
