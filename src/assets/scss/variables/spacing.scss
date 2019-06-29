@@ -1,0 +1,15 @@
+$spacing-xs: 4px;
+$spacing-s: 8px;
+$spacing-m: 12px;
+$spacing-l: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+
+$spacing-map: (
+  xs: $spacing-xs,
+  s: $spacing-s,
+  m: $spacing-m,
+  l: $spacing-l,
+  xl: $spacing-xl,
+  xxl: $spacing-xxl,
+);

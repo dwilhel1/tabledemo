@@ -69,12 +69,12 @@ class App extends React.Component {
                 <table>
                     <thead>
                         <tr>
-                            {columns.map(item => (<th key={item}>{item}</th>))}
+                            {columns.map((item, index) => (<th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={item}>{item}</th>))}
                         </tr>
                     </thead>
                     <tbody>{contacts.length ? contacts.map(item => (
                         <tr key={item.id}>
-                            <td>
+                            <td className={'padding-left-m'}>
                                 <input type="checkbox"/>
                             </td>
                             <td>
@@ -91,7 +91,7 @@ class App extends React.Component {
                                     {isLoaded.deals && item.custom ? item.custom.deals.length : 'Loading...'}
                                 </span>
                             </td>
-                            <td>
+                            <td className={'padding-right-m'}>
                                 <span></span>
                             </td>
                         </tr>

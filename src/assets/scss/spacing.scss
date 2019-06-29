@@ -1,0 +1,61 @@
+@each $size-var, $spacing in $spacing-map {
+    .margin-y-#{$size-var} {
+        margin-top: $spacing;
+        margin-bottom: $spacing;
+    }
+
+    .margin-x-#{$size-var} {
+        margin-left: $spacing;
+        margin-right: $spacing;
+    }
+
+    .margin-#{$size-var} {
+        margin: $spacing;
+    }
+
+    .margin-top-#{$size-var} {
+        margin-top: $spacing;
+    }
+
+    .margin-right-#{$size-var} {
+        margin-right: $spacing;
+    }
+
+    .margin-bottom-#{$size-var} {
+        margin-bottom: $spacing;
+    }
+
+    .margin-left-#{$size-var} {
+        margin-left: $spacing;
+    }
+
+    .padding-y-#{$size-var} {
+        padding-top: $spacing;
+        padding-bottom: $spacing;
+    }
+
+    .padding-x-#{$size-var} {
+        padding-left: $spacing;
+        padding-right: $spacing;
+    }
+
+    .padding-#{$size-var} {
+        padding: $spacing;
+    }
+
+    .padding-top-#{$size-var} {
+        padding-top: $spacing;
+    }
+
+    .padding-right-#{$size-var} {
+        padding-right: $spacing;
+    }
+
+    .padding-bottom-#{$size-var} {
+        padding-bottom: $spacing;
+    }
+
+    .padding-left-#{$size-var} {
+        padding-left: $spacing;
+    }
+}

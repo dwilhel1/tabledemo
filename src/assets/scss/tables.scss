@@ -14,14 +14,6 @@ table {
     text-align: left;
   }
 
-  td:first-child, th:first-child {
-    padding-left: 12px;
-  }
-
-  td:last-child, th:last-child  {
-    padding-right: 12px;
-  }
-
   tbody {
     tr {
       height: $table-body-row-height;
