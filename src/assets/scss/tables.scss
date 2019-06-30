@@ -1,18 +1,17 @@
 $table-body-row-height: 46px;
 $table-head-row-height: 28px;
-$table-border-thickness: 2px;
+$table-border-thickness: 1px;
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 
-    th {
-        font-weight: normal;
+    thead {
         position: sticky;
         top: 0;
         height: $table-head-row-height;
-        background-color: white;
-        text-align: left;
+        background-color: $color-white;
     }
 
     tbody {
@@ -25,7 +24,16 @@ table {
         }
     }
 
-    tr, th {
+    th {
+        font-weight: normal;
+        text-align: left;
+    }
+
+    tr {
         border: $table-border-thickness solid $color-slate-600;
+    }
+
+    td {
+        @extend .text-overflow;
     }
 }

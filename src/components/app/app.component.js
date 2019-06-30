@@ -68,7 +68,7 @@ class App extends React.Component {
             <>
                 <table>
                     <thead>
-                        <tr>
+                        <tr className='color-slate-400'>
                             {columns.map((item, index) => (<th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={item}>{item}</th>))}
                         </tr>
                     </thead>
