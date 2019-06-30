@@ -3,29 +3,29 @@ $table-head-row-height: 28px;
 $table-border-thickness: 2px;
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 
-  th {
-    font-weight: normal;
-    position: sticky;
-    top: 0;
-    height: $table-head-row-height;
-    background-color: white;
-    text-align: left;
-  }
-
-  tbody {
-    tr {
-      height: $table-body-row-height;
+    th {
+        font-weight: normal;
+        position: sticky;
+        top: 0;
+        height: $table-head-row-height;
+        background-color: white;
+        text-align: left;
     }
 
-    tr:nth-child(odd) {
-      background-color: $color-slate-800;
-    }
-  }
+    tbody {
+        tr {
+            height: $table-body-row-height;
+        }
 
-  tr, th {
-    border: $table-border-thickness solid $color-slate-600;
-  }
+        tr:nth-child(odd) {
+            background-color: $color-slate-800;
+        }
+    }
+
+    tr, th {
+        border: $table-border-thickness solid $color-slate-600;
+    }
 }
