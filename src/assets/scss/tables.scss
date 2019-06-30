@@ -1,5 +1,6 @@
 $table-body-row-height: 46px;
 $table-head-row-height: 28px;
+$table-border-thickness: 2px;
 
 table {
   width: 100%;
@@ -20,11 +21,11 @@ table {
     }
 
     tr:nth-child(odd) {
-      background-color: #F7F9FF;
+      background-color: $color-slate-800;
     }
   }
 
   tr, th {
-    border: 1px solid lightgrey;
+    border: $table-border-thickness solid $color-slate-600;
   }
 }

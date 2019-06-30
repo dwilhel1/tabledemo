@@ -1,0 +1,69 @@
+$color-map: () !default;
+
+@function colorify($id, $color) {
+    $color-map: map-merge($color-map, ($id: $color)) !global;
+
+    @return $color;
+}
+
+// Generic
+$color-white: colorify('white', #fff);
+$color-black: colorify('black', #000);
+
+// Slate
+$color-slate-100: colorify('slate-100', #1f2129);
+$color-slate-200: colorify('slate-200', #353a4a);
+$color-slate-300: colorify('slate-300', #4e5468);
+$color-slate-400: colorify('slate-400', #5f667e);
+$color-slate-500: colorify('slate-500', #9298ad);
+$color-slate-600: colorify('slate-600', #ced3e0);
+$color-slate-700: colorify('slate-700', #e4e7f0);
+$color-slate-800: colorify('slate-800', #f7f9fc);
+
+// Strawberry
+$color-strawberry-100: colorify('strawberry-100', #e40e49);
+$color-strawberry-200: colorify('strawberry-200', #f3376b);
+$color-strawberry-300: colorify('strawberry-300', #f56e94);
+$color-strawberry-400: colorify('strawberry-400', #faa5bd);
+$color-strawberry-500: colorify('strawberry-500', #fcdee7);
+$color-strawberry-600: colorify('strawberry-600', #fff2f6);
+
+// Mint
+$color-mint-100: colorify('mint-100', #139879);
+$color-mint-200: colorify('mint-200', #19cca3);
+$color-mint-300: colorify('mint-300', #1bddb1);
+$color-mint-400: colorify('mint-400', #6ae6c9);
+$color-mint-500: colorify('mint-500', #b6f2e4);
+$color-mint-600: colorify('mint-600', #ebfffa);
+
+// Ocean
+$color-ocean-100: colorify('ocean-100', #1b54d9);
+$color-ocean-200: colorify('ocean-200', #356ae6);
+$color-ocean-300: colorify('ocean-300', #5884ea);
+$color-ocean-400: colorify('ocean-400', #c1d2f7);
+$color-ocean-500: colorify('ocean-500', #e3ebfc);
+$color-ocean-600: colorify('ocean-600', #fafbff);
+
+// Creamsicle
+$color-creamsicle-100: colorify('creamsicle-100', #f46700);
+$color-creamsicle-200: colorify('creamsicle-200', #ff8730);
+$color-creamsicle-300: colorify('creamsicle-300', #ffa869);
+$color-creamsicle-400: colorify('creamsicle-400', #ffbf90);
+$color-creamsicle-500: colorify('creamsicle-500', #ffe1cb);
+$color-creamsicle-600: colorify('creamsicle-600', #fff8f2);
+
+// Banana
+$color-banana-100: colorify('banana-100', #e6b000);
+$color-banana-200: colorify('banana-200', #facf3f);
+$color-banana-300: colorify('banana-300', #fbd965);
+$color-banana-400: colorify('banana-400', #fce28b);
+$color-banana-500: colorify('banana-500', #fdecb2);
+$color-banana-600: colorify('banana-600', #fff9e6);
+
+// Lavender
+$color-lavender-100: colorify('lavender-100', #7733ff);
+$color-lavender-200: colorify('lavender-200', #9159fc);
+$color-lavender-300: colorify('lavender-300', #aa81fc);
+$color-lavender-400: colorify('lavender-400', #c3a7fc);
+$color-lavender-500: colorify('lavender-500', #eae0fe);
+$color-lavender-600: colorify('lavender-600', #f7f2ff);

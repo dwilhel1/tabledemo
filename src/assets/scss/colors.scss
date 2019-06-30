@@ -1,0 +1,29 @@
+@each $color-var, $color in $color-map {
+    .color-#{$color-var} {
+        color: $color;
+    }
+
+    .color-background-#{$color-var} {
+        background-color: $color;
+    }
+}
+
+.color-default {
+    color: $color-slate-100;
+}
+
+.color-light {
+    color: $color-slate-400;
+}
+
+.color-action {
+    color: $color-ocean-200;
+}
+
+.color-error {
+    color: $color-strawberry-100;
+}
+
+.color-success {
+    color: $color-mint-100;
+}

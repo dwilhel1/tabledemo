@@ -74,11 +74,11 @@ class App extends React.Component {
                     </thead>
                     <tbody>{contacts.length ? contacts.map(item => (
                         <tr key={item.id}>
-                            <td className={'padding-left-m'}>
-                                <input type="checkbox"/>
+                            <td className='padding-left-m'>
+                                <input type='checkbox' className='checkbox-default'/>
                             </td>
-                            <td>
-                                <span>{item.id} {item.firstName} {item.lastName}</span>
+                            <td title={`ID: ${item.id}`}>
+                                <span className='color-action'>{item.firstName} {item.lastName}</span>
                             </td>
                             <td>
                                 <span></span>
