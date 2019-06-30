@@ -1,0 +1,15 @@
+$scale-36: 36px;
+$scale-32: 32px;
+$scale-28: 28px;
+$scale-24: 24px;
+$scale-20: 20px;
+$scale-18: 18px;
+
+$scale-map: (
+    36: $spacing-xs,
+    32: $spacing-s,
+    28: $spacing-m,
+    24: $spacing-l,
+    20: $spacing-xl,
+    18: $spacing-xxl,
+);

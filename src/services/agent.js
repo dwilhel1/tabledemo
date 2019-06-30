@@ -24,20 +24,26 @@ const Contacts = {
         requests.get(`/contacts/${contactId}/contactDeals`),
 };
 
-const Deals = {
+const Deal = {
     getAllDeals: () =>
         requests.get('/deals'),
 };
 
-const Tags = {
+const Tag = {
     getAllTags: () =>
         requests.get('/tags'),
     getContactTag: (contactId) =>
         requests.get(`/contactTags/${contactId}/tag`),
 };
 
+const Address = {
+    getContactAddress: (addressId) =>
+        requests.get(`/addresses/${addressId}`),
+};
+
 export default {
     Contacts,
-    Deals,
-    Tags,
+    Deals: Deal,
+    Tags: Tag,
+    Address,
 };

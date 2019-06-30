@@ -1,3 +1,9 @@
+@each $size-var, $scale in $scale-map {
+    .font-size-#{$size-var} {
+        font-size: $scale;
+    }
+}
+
 .text-overflow {
     text-overflow: ellipsis;
     overflow: hidden

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import agent from '../../services/agent';
+import { getInitial } from '../../utilities/string';
 
 class App extends React.Component {
     constructor(props) {
@@ -8,11 +9,11 @@ class App extends React.Component {
         this.state = {
             error: {
                 contacts: false,
-                deals: false,
             },
             isLoaded: {
                 contacts: false,
                 deals: false,
+                tags: true,
             },
             contacts: [],
             columns: ['', 'Contact', 'Total Value', 'Location', 'Deals', 'Tags'],
@@ -30,8 +31,17 @@ class App extends React.Component {
                     contacts: contactsListResult.contacts,
                 });
                 this.state.contacts.forEach((contact, index) => {
-                    // agent.Contacts.getContactData(contact.id).then((result) => console.log(result));
-                    // agent.Contacts.getContactTags(contact.id).then((result) => console.log(result));
+                    // console.log(contact.links);
+                    // console.log(contact.geoAddresses);
+                    agent.Contacts.getContactData(contact.id).then((result) => console.log(result.contactDatum));
+                    // agent.Address.getContactAddress(contact.id).then((result) => console.log(result));
+                    /* agent.Tags.getContactTag(contact.id).then((contactTagResult) => {
+                        console.log(contactTagResult.tag.tag);
+                        /* this.setState({
+                            ...this.state.contacts,
+                        });
+                    }); */
+
                     agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
                         const contacts = this.state.contacts;
                         contacts[index].custom = {
@@ -44,7 +54,19 @@ class App extends React.Component {
                             },
                             contacts,
                         });
-                    });
+                    },
+                    (error) => {
+                        this.setState({
+                            isLoaded: {
+                                deals: true,
+                            },
+                            error: {
+                                ...this.state.error.deals,
+                                error,
+                            },
+                        });
+                    }
+                    );
                 });
             },
             (error) => {
@@ -74,10 +96,14 @@ class App extends React.Component {
                     </thead>
                     <tbody>{contacts.length ? contacts.map(item => (
                         <tr key={item.id}>
-                            <td className='padding-left-m'>
+                            <td className='padding-x-m'>
                                 <input type='checkbox' className='checkbox-default'/>
                             </td>
-                            <td title={`ID: ${item.id}`}>
+                            <td className='flex align-items-center' title={`ID: ${item.id}`}>
+                                {(item.firstName && item.lastName) ?
+                                    <div className='contact-initials margin-right-m color-background-lavender-500 flex justify-content-center align-items-center'>{getInitial(item.firstName)}{getInitial(item.lastName)}</div>
+                                    : null
+                                }
                                 <span className='color-action'>{item.firstName} {item.lastName}</span>
                             </td>
                             <td>
