@@ -16,8 +16,20 @@ class App extends React.Component {
                 deals: false,
             },
             contacts: [],
-            columns: ['checkbox', 'ID', 'Contact', 'Phone', 'Deals', 'IP', ''],
+            columns: [
+                {type: 'checkbox'},
+                {type: 'ID', sort: true},
+                {type: 'Contact', sort: true},
+                {type: 'Phone', sort: true},
+                {type: 'Deals'},
+                {type: 'IP', sort: true},
+                {type: ''},
+            ],
             actions: ['Delete', 'Update'],
+        };
+        this.sortData = (column) => event => {
+            event.preventDefault();
+            console.log(column);
         };
     }
 
@@ -94,9 +106,9 @@ class App extends React.Component {
                 <table>
                     <thead>
                         <tr className='color-slate-400'>
-                            {columns.map((item, index) => (
-                                <th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={index}>
-                                    {item === 'checkbox' ? <input type='checkbox' className='checkbox-default'/> : item}
+                            {columns.map((column, index) => (
+                                <th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={index} onClick={column.sort ? this.sortData(column) : null}>
+                                    {column.type === 'checkbox' ? <input type='checkbox' className='checkbox-default'/> : <span>{column.type}</span>}
                                 </th>
                             ))}
                         </tr>
