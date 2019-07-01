@@ -1,0 +1,44 @@
+$button-border-radius: 5px;
+$button-multi-height: 33px;
+
+button {
+    word-break: keep-all;
+    &:hover {
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        &:focus {
+            cursor: none;
+        }
+    }
+}
+
+.button-small {
+    border: 1px solid $color-slate-600;
+    border-radius: $button-border-radius;
+    background-color: $color-white;
+    padding: $spacing-s;
+
+    &:active {
+        background-color: $color-slate-800;
+    }
+}
+
+.button-multi-left {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.button-multi-right {
+    background-color: $color-white;
+    height: $button-multi-height;
+    border: 1px solid $color-slate-600;
+    border-radius: 0 $button-border-radius $button-border-radius 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}

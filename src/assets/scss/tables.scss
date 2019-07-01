@@ -5,6 +5,7 @@ $table-border-thickness: 1px;
 table {
     width: 100%;
     border-collapse: collapse;
+    word-break: break-word;
 
     thead {
         position: sticky;
@@ -14,10 +15,6 @@ table {
     }
 
     tbody {
-        td {
-            height: $table-body-row-height;
-        }
-
         td:first-child {
             width: $spacing-m
         }
@@ -25,6 +22,10 @@ table {
         tr:nth-child(odd) {
             background-color: $color-slate-800;
         }
+    }
+
+    td {
+        height: $table-body-row-height;
     }
 
     th {
