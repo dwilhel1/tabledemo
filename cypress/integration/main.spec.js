@@ -25,6 +25,23 @@ describe('Tabledemo Integration Tests', function () {
         })
     });
 
+    context('With route errors', function () {
+        beforeEach(function () {
+            cy.route({
+                method: 'GET',
+                url: `${Cypress.env('endpointServer')}/contacts`,
+                status: 500,
+                response: {},
+            }).as('contactsRoute');
+            cy.visit('/');
+            cy.wait('@contactsRoute');
+        });
+
+        it('displays contacts error message', function () {
+            cy.get('body').should('contain', 'Error: Request failed with status code 500');
+        })
+    });
+
     context('With all data', function () {
         beforeEach(function () {
             cy.route('GET', `${Cypress.env('endpointServer')}/contacts`, '@contactsResponse').as('contactsRoute');

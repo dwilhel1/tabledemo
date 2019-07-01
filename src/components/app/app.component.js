@@ -27,6 +27,7 @@ class App extends React.Component {
             ],
             actions: ['Delete', 'Update'],
         };
+        // TODO: Add column sorting
         this.sortData = (column) => event => {
             event.preventDefault();
             console.log(column);
@@ -75,8 +76,7 @@ class App extends React.Component {
                                         deals: true,
                                     },
                                     error: {
-                                        ...this.state.error.deals,
-                                        error,
+                                        deals: error,
                                     },
                                 });
                             }
@@ -91,8 +91,7 @@ class App extends React.Component {
                             contacts: true,
                         },
                         error: {
-                            ...this.state.error.contacts,
-                            error,
+                            contacts: error,
                         },
                     });
                 }
@@ -159,7 +158,7 @@ class App extends React.Component {
                     </tbody>
                 </table>
 
-                {(!contacts || !contacts.length) && isLoaded.contacts? <p>No contact data</p> : null}
+                {!contacts && isLoaded.contacts? <p>No contact data</p> : null}
                 {error.contacts ? <p className='color-error'>Error: {error.contacts.message}</p> : !isLoaded.contacts ? <p>Loading...</p>: null}
             </>
         );

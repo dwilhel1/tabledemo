@@ -43,7 +43,7 @@ const Address = {
 
 export default {
     Contacts,
-    Deals: Deal,
-    Tags: Tag,
+    Deal,
+    Tag,
     Address,
 };
