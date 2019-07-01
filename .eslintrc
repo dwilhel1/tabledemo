@@ -25,5 +25,9 @@
             "pragma": "React",
             "version": "detect"
         }
+    },
+    "env": {
+        "mocha": true,
+        "es6": true
     }
 }

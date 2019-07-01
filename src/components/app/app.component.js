@@ -21,54 +21,67 @@ class App extends React.Component {
         };
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     componentDidMount() {
+        this._isMounted = true;
+
         agent.Contacts.getAllContacts().then(
             (contactsListResult) => {
-                this.setState({
-                    isLoaded: {
-                        ...this.state.isLoaded,
-                        contacts: true,
-                    },
-                    contacts: contactsListResult.contacts,
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        isLoaded: {
+                            ...this.state.isLoaded,
+                            contacts: true,
+                        },
+                        contacts: contactsListResult.contacts,
+                    });
+                }
                 this.state.contacts.forEach((contact, index) => {
                     agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
                         const contacts = this.state.contacts;
                         contacts[index].custom = {
                             deals: contactDealsResult.contactDeals,
                         };
-                        this.setState({
-                            isLoaded: {
-                                ...this.state.isLoaded,
-                                deals: true,
-                            },
-                            contacts,
-                        });
+                        if (this._isMounted) {
+                            this.setState({
+                                isLoaded: {
+                                    ...this.state.isLoaded,
+                                    deals: true,
+                                },
+                                contacts,
+                            });
+                        }
                     },
                     (error) => {
-                        this.setState({
-                            isLoaded: {
-                                deals: true,
-                            },
-                            error: {
-                                ...this.state.error.deals,
-                                error,
-                            },
-                        });
-                    }
-                    );
+                        if (this._isMounted) {
+                            this.setState({
+                                isLoaded: {
+                                    deals: true,
+                                },
+                                error: {
+                                    ...this.state.error.deals,
+                                    error,
+                                },
+                            });
+                        }
+                    });
                 });
             },
             (error) => {
-                this.setState({
-                    isLoaded: {
-                        contacts: true,
-                    },
-                    error: {
-                        ...this.state.error.contacts,
-                        error,
-                    },
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        isLoaded: {
+                            contacts: true,
+                        },
+                        error: {
+                            ...this.state.error.contacts,
+                            error,
+                        },
+                    });
+                }
             }
         );
     }
