@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "env": {
+        "endpointServer": "https://cors-anywhere.herokuapp.com/https://lamppoststudios.api-us1.com/api/3"
+    }
+}

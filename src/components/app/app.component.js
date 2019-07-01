@@ -51,36 +51,38 @@ class App extends React.Component {
                         contacts: contactsListResult.contacts,
                     });
                 }
-                this.state.contacts.forEach((contact, index) => {
-                    agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
-                        const contacts = this.state.contacts;
-                        contacts[index].custom = {
-                            deals: contactDealsResult.contactDeals,
-                        };
-                        if (this._isMounted) {
-                            this.setState({
-                                isLoaded: {
-                                    ...this.state.isLoaded,
-                                    deals: true,
-                                },
-                                contacts,
-                            });
-                        }
-                    },
-                    (error) => {
-                        if (this._isMounted) {
-                            this.setState({
-                                isLoaded: {
-                                    deals: true,
-                                },
-                                error: {
-                                    ...this.state.error.deals,
-                                    error,
-                                },
-                            });
-                        }
+                if (this.state.contacts) {
+                    this.state.contacts.forEach((contact, index) => {
+                        agent.Contacts.getContactDeals(contact.id).then((contactDealsResult) => {
+                            const contacts = this.state.contacts;
+                            contacts[index].custom = {
+                                deals: contactDealsResult.contactDeals,
+                            };
+                            if (this._isMounted) {
+                                this.setState({
+                                    isLoaded: {
+                                        ...this.state.isLoaded,
+                                        deals: true,
+                                    },
+                                    contacts,
+                                });
+                            }
+                        },
+                        (error) => {
+                            if (this._isMounted) {
+                                this.setState({
+                                    isLoaded: {
+                                        deals: true,
+                                    },
+                                    error: {
+                                        ...this.state.error.deals,
+                                        error,
+                                    },
+                                });
+                            }
+                        });
                     });
-                });
+                }
             },
             (error) => {
                 if (this._isMounted) {
@@ -113,7 +115,7 @@ class App extends React.Component {
                             ))}
                         </tr>
                     </thead>
-                    <tbody>{contacts.length ? contacts.map(contact => (
+                    <tbody>{contacts && contacts.length ? contacts.map(contact => (
                         <tr key={contact.id}>
                             <td className='padding-x-m'>
                                 <input type='checkbox' className='checkbox-default'/>
@@ -157,6 +159,7 @@ class App extends React.Component {
                     </tbody>
                 </table>
 
+                {(!contacts || !contacts.length) && isLoaded.contacts? <p>No contact data</p> : null}
                 {error.contacts ? <p className='color-error'>Error: {error.contacts.message}</p> : !isLoaded.contacts ? <p>Loading...</p>: null}
             </>
         );

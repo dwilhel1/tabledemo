@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "firstName": "Brad",
+      "lastName": "Oakley",
+      "id": 1,
+      "ip": "34587345",
+      "phone": 2695880995,
+      "email": "boakley@gmail.com"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Oakley",
+      "id": 2,
+      "ip": "34545345",
+      "phone": 2695880996,
+      "email": "boakley2@gmail.com"
+    },
+    {
+      "firstName": "Doug",
+      "lastName": "Williams",
+      "id": 3,
+      "ip": "34545345",
+      "phone": 26958345996,
+      "email": "dwilly@gmail.com"
+    }
+  ]
+}

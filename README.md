@@ -41,6 +41,13 @@ In the project directory you can run the following scripts:
 * It correctly bundles React in production mode and optimizes the build for the best performance
 * The build is minified and the filenames include the hashes
 
+## Cypress
+Cypress is an end-to-end integration testing utility for web applications. To run the Cypress tests for this project, follow the steps below:
+
+* [Downloading and running Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress.html#Direct-download)
+
+![](https://i.imgur.com/hAvzTH9.png "tabledemo browser tests example")
+
 ## References
 
 * [Application Heroku Link](https://dw-demotable.herokuapp.com/)
