@@ -1,5 +1,4 @@
 import React from 'react';
-
 import MenuDownIcon from 'mdi-react/MenuDownIcon';
 
 import agent from '../../services/agent';

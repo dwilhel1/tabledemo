@@ -1,8 +1,10 @@
 $button-border-radius: 5px;
-$button-multi-height: 33px;
+$button-height: 32px;
 
 button {
+    height: $button-height;
     word-break: keep-all;
+
     &:hover {
         cursor: pointer;
 
@@ -35,7 +37,6 @@ button {
 
 .button-multi-right {
     background-color: $color-white;
-    height: $button-multi-height;
     border: 1px solid $color-slate-600;
     border-radius: 0 $button-border-radius $button-border-radius 0;
     padding: 0;
