@@ -22,6 +22,10 @@ The project requires several env variables to run correctly. The required keys a
 
 In the project directory you can run the following scripts:
 
+### `yarn install`
+
+* Install all necessary packages according to `package.json` to run the project
+
 ### `yarn start`
 
 * Runs the app in the development mode
