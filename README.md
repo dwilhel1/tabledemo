@@ -2,34 +2,48 @@
 
 An implementation of the take-home coding test for ActiveCampaign's frontend engineer position.
 
-## Available Scripts
+## Environment Variables
 
-In the project directory, you can run:
+The project requires several env variables to run correctly. The required keys are as follows:
 
-### `npm start`
+**`REACT_APP_API_KEY`**
+* Sensitive character sequence required to access ActiveCampaign API
+* API key given to applicant via email
+  
+**`REACT_APP_HOST`**
+* ActiveCampaign API URL
+* Host API url provided to applicant via email
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**`REACT_APP_HOST_PROXY`**
+* Proxy server required for performing [CORS requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) against the `APP_HOST` API
+* Discussed via email with applicant
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Scripts
 
-### `npm test`
+In the project directory you can run the following scripts:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###`yarn start`
 
-### `npm run build`
+* Runs the app in the development mode
+* Open [http://localhost:3000](http://localhost:3000) to view app in the browser
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###`yarn lint`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+* Runs the app linting tools with output printed to console
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `yarn test`
+
+* Runs the app testing suite with output printed to the console
+
+### `yarn run build`
+
+* Builds the app for production to the `build` folder
+* It correctly bundles React in production mode and optimizes the build for the best performance
+* The build is minified and the filenames include the hashes
 
 ## References
 
-* [API Docs](https://developers.activecampaign.com/reference)
-* [API Host](https://lamppoststudios.activehosted.com)
+* [Application Heroku Link](https://dw-demotable.herokuapp.com/)
+  * Live demo of the `tabledemo` application
+* [ActiveCampaign API Docs](https://developers.activecampaign.com/reference)
+* [ActiveCampaign API Host](https://lamppoststudios.activehosted.com)
