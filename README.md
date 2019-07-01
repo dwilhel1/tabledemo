@@ -50,7 +50,7 @@ Cypress is an end-to-end integration testing utility for web applications. To ru
 
 * [Downloading and running Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress.html#Direct-download)
 
-![](https://i.imgur.com/hAvzTH9.png "tabledemo browser tests example")
+![](https://i.imgur.com/rBJg5F1.png "tabledemo browser tests example")
 
 ## References
 
