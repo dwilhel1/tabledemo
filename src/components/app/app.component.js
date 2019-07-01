@@ -16,7 +16,7 @@ class App extends React.Component {
                 deals: false,
             },
             contacts: [],
-            columns: ['', 'ID', 'Contact', 'Phone', 'Deals', 'IP', ''],
+            columns: ['checkbox', 'ID', 'Contact', 'Phone', 'Deals', 'IP', ''],
             actions: ['Delete', 'Update'],
         };
     }
@@ -81,7 +81,11 @@ class App extends React.Component {
                 <table>
                     <thead>
                         <tr className='color-slate-400'>
-                            {columns.map((item, index) => (<th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={index}>{item}</th>))}
+                            {columns.map((item, index) => (
+                                <th className={index === 0 ? 'padding-left-m' : index === (columns.length - 1) ? 'padding-right-m' : ''} key={index}>
+                                    {item === 'checkbox' ? <input type='checkbox' className='checkbox-default'/> : item}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>{contacts.length ? contacts.map(contact => (
