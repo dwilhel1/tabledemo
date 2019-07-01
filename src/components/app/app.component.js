@@ -112,7 +112,7 @@ class App extends React.Component {
                             <td>
                                 <span>{contact.ip ? contact.ip : null}</span>
                             </td>
-                            <td className='padding-right-m flex-inline align-items-center'>
+                            <td className='padding-right-m flex align-items-center justify-content-right'>
                                 {contact.email ?
                                     <>
                                         <a href={'mailto:' + contact.email}><button className='button-small button-multi-left'>Email</button></a>
