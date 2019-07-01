@@ -22,12 +22,12 @@ The project requires several env variables to run correctly. The required keys a
 
 In the project directory you can run the following scripts:
 
-###`yarn start`
+### `yarn start`
 
 * Runs the app in the development mode
 * Open [http://localhost:3000](http://localhost:3000) to view app in the browser
 
-###`yarn lint`
+### `yarn lint`
 
 * Runs the app linting tools with output printed to console
 
