@@ -17,7 +17,9 @@
         "console": false,
         "global": false,
         "process": false,
-        "Promise": false
+        "Promise": false,
+        "Cypress": false,
+        "cy": false
       },
     "settings": {
         "react": {
@@ -28,7 +30,6 @@
     },
     "env": {
         "mocha": true,
-        "es6": true,
-        "cypress/globals": true
+        "es6": true
     }
 }

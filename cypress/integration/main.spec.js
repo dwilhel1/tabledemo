@@ -21,8 +21,8 @@ describe('Tabledemo Integration Tests', function () {
 
             columns.forEach(column => {
                 cy.get('thead').should('contain', column);
-            })
-        })
+            });
+        });
     });
 
     context('With route errors', function () {
@@ -39,7 +39,7 @@ describe('Tabledemo Integration Tests', function () {
 
         it('displays contacts error message', function () {
             cy.get('body').should('contain', 'Error: Request failed with status code 500');
-        })
+        });
     });
 
     context('With all data', function () {
@@ -47,7 +47,7 @@ describe('Tabledemo Integration Tests', function () {
             cy.route('GET', `${Cypress.env('endpointServer')}/contacts`, '@contactsResponse').as('contactsRoute');
             cy.route('GET', `${Cypress.env('endpointServer')}/contacts/**/contactDeals`, '@contactDealsResponse').as('contactDealsRoute');
             cy.visit('/');
-            cy.wait(['@contactsRoute', '@contactDealsRoute'])
+            cy.wait(['@contactsRoute', '@contactDealsRoute']);
         });
 
         it('displays contacts table with correct row count', function () {
@@ -63,7 +63,7 @@ describe('Tabledemo Integration Tests', function () {
                     .and('contain', contact.phone)
                     .and('contain', dealsCount)
                     .and('contain', contact.ip);
-            })
+            });
         });
     });
 });
